@@ -1,3 +1,4 @@
+
 name: Build Rumman Sordar APK
 
 on:
@@ -19,6 +20,9 @@ jobs:
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
+
+      - name: Accept Android SDK licenses
+        run: yes | sdkmanager --licenses || true
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -44,4 +48,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Rumman-Sordar-APK
-          path: ${{ env.PROJECT_DIR }}/app/build/outputs/apk/debug/*.apkapk
+          path: ${{ env.PROJECT_DIR }}/app/build/outputs/apk/debug/*.apk
